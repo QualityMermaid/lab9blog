@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image";
 
 type BlogSearchQuery = {
     sortBy: string;
@@ -12,10 +13,11 @@ type BlogTopic = {
 }
 
 const blogposts: BlogTopic[]= [
-    {title: "Mers", topic: "information", heroImg: "", description: "A mer/mermaid/merman/merchild/merperson (etc) is...",},
-    {title: "Tails", topic: "equipement", heroImg: "", description: "A list of mer tails from beginner to advance",},
-    {title: "Monofins", topic: "equipement", heroImg: "", description: "A list of monofins used in tails",},
-    {title: "Safty", topic: "safty", heroImg: "", description: "What are some good safty tips for mering.",},
+    {title: "Mers", topic: "information", heroImg: "/images/mers.jpeg", description: "What is a mer/mermaid/merman/merchild/merperson (etc)?",},
+    {title: "Tails", topic: "equipement", heroImg: "/images/tail.jpeg", description: "A list of mer tails from fabric to silicone and more",},
+    {title: "Monofins", topic: "equipement", heroImg: "/images/monofin.jpeg", description: "A list of monofins used in tails",},
+    {title: "Safty", topic: "safty", heroImg: "/images/safty.png", description: "What are some good safty tips for being a mer.",},
+    {title: "Media", topic: "information", heroImg: "/images/OpheraMermaid.png", description: "Where can you find mers in the media",},
 ]
 
 function compareBlogTopics(a: BlogTopic, b: BlogTopic){
@@ -36,16 +38,18 @@ export default function BlogPage({searchParams}:{searchParams: BlogSearchQuery})
     }
 
     return (
-        <main>
+        <main className="p-2">
             <h2>Blog</h2>
             <Link href="/blog">Default</Link>
             <Link href="/blog?sortBy=topicasc">Ascending Topics</Link>
             <Link href="/blog?sortBy=topicdec">Descending Topics</Link>
-            <ul>
+            <ul className="p-2">
                 {blogposts.map((post) => {
                     return(
                         <li key={post.title}>
                             <Link href={`/blog/${post.title}`}>{post.title}</Link>
+                            <Image src={post.heroImg} alt={post.title} width={200} height={400}/>
+                            <p>{post.description}</p>
                         </li>
                     )
                 })}
