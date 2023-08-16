@@ -39,17 +39,20 @@ export default function BlogPage({searchParams}:{searchParams: BlogSearchQuery})
 
     return (
         <main className="p-2">
-            <h2>Blog</h2>
+            <h3>Topic Sorting</h3>
+            <div className="flex gap-3">
             <Link href="/blog">Default</Link>
             <Link href="/blog?sortBy=topicasc">Ascending Topics</Link>
             <Link href="/blog?sortBy=topicdec">Descending Topics</Link>
+            </div>
             <ul className="p-2">
                 {blogposts.map((post) => {
                     return(
                         <li key={post.title}>
-                            <Link href={`/blog/${post.title}`}>{post.title}</Link>
+                            <Link href={`/blog/${post.title}`}>{post.title}
                             <Image src={post.heroImg} alt={post.title} width={200} height={400}/>
                             <p>{post.description}</p>
+                            </Link>
                         </li>
                     )
                 })}
