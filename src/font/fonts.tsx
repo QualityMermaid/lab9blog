@@ -1,5 +1,4 @@
-import { Merienda } from "next/font/google";
-import { Lumanosimo } from "next/font/google"
+import { Merienda, Lumanosimo, Montserrat } from "next/font/google";
 
 
 export const merienda = Merienda({
@@ -8,6 +7,11 @@ export const merienda = Merienda({
 
 
 export const lumanosimo = Lumanosimo({
+    subsets: ["latin"],
+    weight: "400"
+})
+
+export const montserrat = Montserrat({
     subsets: ["latin"],
     weight: "400"
 })
