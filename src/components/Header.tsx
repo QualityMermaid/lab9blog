@@ -4,7 +4,7 @@ import {GiMermaid} from "react-icons/gi"
 
 export default function Header() {
   return (
-    <header className={`sticky top-0 left-0 right-0 bg-black w-ful ${lumanosimo.className} p-5`} >
+    <header className={`sticky top-0 left-0 right-0 bg-black w-ful ${lumanosimo.className} p-4`} >
         <h1 className={`${merienda.className} text-fuchsia-500 text-6xl text-center`}>MerTalk</h1>
         <nav className="m-2">
             <ul className="flex gap-3 justify-center">
