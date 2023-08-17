@@ -16,9 +16,9 @@ type BlogTopic = {
 
 const blogposts: BlogTopic[]= [
     {title: "Mers", topic: "information", heroImg: "/images/mers.png", description: "What is a mer?",},
-    {title: "Tails", topic: "equipement", heroImg: "/images/tail.png", description: "A list of mer tails from fabric to silicone and more!",},
+    {title: "Tails", topic: "equipement", heroImg: "/images/tail.png", description: "A list of mer tails!",},
     {title: "Monofins", topic: "equipement", heroImg: "/images/monofin.png", description: "A list of monofins used in tails.",},
-    {title: "Safty", topic: "safty", heroImg: "/images/safty.png", description: "What are some good safty tips for being a mer.",},
+    {title: "Safty", topic: "safty", heroImg: "/images/safty.png", description: "Safty tips for being a mer.",},
     {title: "Media", topic: "information", heroImg: "/images/OpheraMermaid.png", description: "Where can you find mers in the media.",},
 ]
 
@@ -55,7 +55,7 @@ export default function BlogPage({searchParams}:{searchParams: BlogSearchQuery})
                     return(
                         <li className="border-dashed border-2 h- border-sky-400 m-2 p-2 hover:border-purple-500 hover:bg-gray-800" key={post.title}>
                             <Link className={`grid justify-center text-center  ${merienda.className}`} href={`/blog/${post.title}`}>
-                            <span className="text-purple-400">{post.title}</span>
+                            <span className="text-purple-400 text-2xl">{post.title}</span>
                             <Image className="mx-auto p-2 h-60 w-fit" src={post.heroImg} alt={post.title} width={200} height={200}/>
                             <p className={` ${montserrat.className}`}>{post.description}</p>
                             <p className={` text-lime-400 ${montserrat.className}`}>{post.topic}</p>
