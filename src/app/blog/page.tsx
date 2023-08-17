@@ -4,6 +4,7 @@ import { merienda, montserrat } from "@/font/fonts"
 import { getPosts } from "@/lib/blogposts";
 
 
+
 type BlogSearchQuery = {
     sortBy: string;
 }
@@ -40,6 +41,7 @@ function compareBlogTitle(a: BlogTopic, b: BlogTopic){
 }
 
 export default function BlogPage({searchParams}:{searchParams: BlogSearchQuery}) {
+    console.log(searchParams)
     if(searchParams.sortBy === "topicasc"){
         blogposts.sort(compareBlogTopics)
     } else if ( searchParams.sortBy === "topicdec"){
@@ -57,7 +59,7 @@ export default function BlogPage({searchParams}:{searchParams: BlogSearchQuery})
             </nav>
             <div className="p-3">
                 <div className="border border-dashed border-purple-400 w-fit p-2">
-                    <h3 className="text-lime-400 ">Blog Sorting</h3>
+                    <h3 className="text-lime-400 ">Sorting</h3>
                     <div className="flex gap-3">
                     <Link className="text-blue-400 hover:text-purple-400" href="/blog">Default</Link>
                     <Link className="text-blue-400 hover:text-purple-400" href="/blog?sortBy=topicasc">Topic</Link>

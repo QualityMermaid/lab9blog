@@ -1,8 +1,10 @@
 import { merienda, montserrat } from "@/font/fonts"
 import { getPostsByTopic, getPosts } from "@/lib/blogposts"
-import { PageNotFoundError } from "next/dist/shared/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
+import Tim from "@/components/Tim"
+import Custom404 from "@/components/Custom404"
+
 
 type BlogPageParams = {
   params: {
@@ -17,18 +19,41 @@ export function generateStaticParams(){
 
 export default function BlogTopics({params}:BlogPageParams) {
   const posts = getPostsByTopic(params.topic)
-  if(!posts){
-    PageNotFoundError
+  console.log(posts)
+
+  if(params.topic === "tim"){
+    return(
+      <>
+      <Tim></Tim>
+      <p>he</p>
+
+      </>
+    )
+  } else if(!posts){
+    return(
+      <>
+      <Custom404/>
+      </>
+    )
   }
+
 return (
   <main >
-       <nav className="flex gap-6 justify-center mb-3 pb-2 sticky top-36 bg-black">
+      <nav className="flex gap-6 justify-center mb-3 pb-2 sticky top-36 bg-black">
+                <Link className="text-lime-400 hover:text-blue-400" href={`/blog/`}>All</Link>
                 <Link className="text-lime-400 hover:text-blue-400" href={`/blog/topics/equipment`}>Equipment</Link>
                 <Link className="text-lime-400 hover:text-blue-400" href={`/blog/topics/information`}>Information</Link>
                 <Link className="text-lime-400 hover:text-blue-400" href={`/blog/topics/fun`}>Fun</Link>
         </nav>
+        {/* <div className="border border-dashed border-purple-400 w-fit p-2">
+          <h3 className="text-lime-400 ">Sort</h3>
+          <div className="flex gap-3">
+            <Link className="text-blue-400 hover:text-purple-400" href={`/blog/topics/${params.topic}`}>Default</Link>
+            <Link className="text-blue-400 hover:text-purple-400" href={`/blog/topics/${params.topic}?sortBy=alphabet`}>Alphabetical</Link>
+          </div>
+        </div> */}
         <div className="p-3">
-     <ul className="p-2 items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <ul className="p-2 items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {posts.map((post) => {
                     return(
                         <li className="border-dashed border-2 h- border-sky-400 m-2 p-2" key={post.slug}>
