@@ -21,15 +21,13 @@ export default function BlogTopics({params}:BlogPageParams) {
     PageNotFoundError
   }
 return (
-  <main className="p-3">
-        <nav>
-                <h2>Topics</h2>
-                <ul>
-                    <Link href={`/blog/topics/equipment`}>Equipment</Link>
-                    <Link href={`/blog/topics/information`}>Information</Link>
-                    <Link href={`/blog/topics/fun`}>Fun</Link>
-                </ul>
-            </nav>
+  <main >
+       <nav className="flex gap-6 justify-center mb-3 pb-2 sticky top-36 bg-black">
+                <Link className="text-lime-400 hover:text-blue-400" href={`/blog/topics/equipment`}>Equipment</Link>
+                <Link className="text-lime-400 hover:text-blue-400" href={`/blog/topics/information`}>Information</Link>
+                <Link className="text-lime-400 hover:text-blue-400" href={`/blog/topics/fun`}>Fun</Link>
+        </nav>
+        <div className="p-3">
      <ul className="p-2 items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {posts.map((post) => {
                     return(
@@ -42,6 +40,7 @@ return (
                     )
                 })}
             </ul>
+            </div>
   </main>
 )
 }
