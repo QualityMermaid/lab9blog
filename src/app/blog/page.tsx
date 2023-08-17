@@ -56,7 +56,8 @@ export default function BlogPage({searchParams}:{searchParams: BlogSearchQuery})
                         <li className="border-dashed border-2 h- border-sky-400 m-2 p-2 hover:border-purple-500 hover:bg-gray-800" key={post.title}>
                             <Link className={`grid justify-center text-center  ${merienda.className}`} href={`/blog/${post.title}`}>
                             <span className="text-purple-400 text-2xl">{post.title}</span>
-                            <Image className="mx-auto p-2 h-60 w-fit" src={post.heroImg} alt={post.title} width={200} height={200}/>
+                            <Image className="mx-auto p-2 h-60 w-fit" placeholder="blur"   blurDataURL={`/_next/image?url=${post.heroImg}&w=16&q=1`}
+                            src={post.heroImg} alt={post.title} width={200} height={200}/>
                             <p className={` ${montserrat.className}`}>{post.description}</p>
                             <p className={` text-lime-400 ${montserrat.className}`}>{post.topic}</p>
                             </Link>
