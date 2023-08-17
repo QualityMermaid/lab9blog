@@ -1,7 +1,9 @@
 import { merienda, montserrat } from "@/font/fonts"
 import { getPostBySlug, getPosts } from "@/lib/blogposts"
-import { PageNotFoundError } from "next/dist/shared/lib/utils"
+import {notFound} from "next/navigation"
 import Image from "next/image"
+import Tim from "@/components/Tim"
+import Custom404 from "@/components/Custom404"
 
 type BlogPageParams = {
   params: {
@@ -17,9 +19,18 @@ export function generateStaticParams(){
 export default function BlogTopic({params}:BlogPageParams) {
   const post = getPostBySlug(params.slug)
 
-  if(!post){
-    PageNotFoundError
-  }
+  if(params.slug === "tim"){
+    return(
+      <>
+      <Tim></Tim>
+      </>
+    )
+  } else if (!post){
+    return(
+      <>
+      <Custom404/>
+      </>
+    )  }
 
 return (
   <main className="p-3">
