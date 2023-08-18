@@ -14,6 +14,7 @@ type BlogTopic = {
     topic: string;
     heroImg: string;
     description: string;
+    slug: string
 }
 
 const blogposts: BlogTopic[]= getPosts()
