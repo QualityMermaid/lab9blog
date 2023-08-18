@@ -11,11 +11,10 @@ type BlogSearchQuery = {
 
 type BlogTopic = {
     title: string;
-    slug: string;
     topic: string;
     heroImg: string;
     description: string;
-    content: string;
+    slug: string
 }
 
 const blogposts: BlogTopic[]= getPosts()
@@ -61,7 +60,7 @@ export default function BlogPage({searchParams}:{searchParams: BlogSearchQuery})
                 <div className="border border-dashed border-purple-400 w-fit p-2">
                     <h3 className="text-lime-400 ">Sorting</h3>
                     <div className="flex gap-3">
-                    <Link className="text-blue-400 hover:text-purple-400" href="/blog">Default</Link>
+                    {/* <Link className="text-blue-400 hover:text-purple-400" href="/blog">Default</Link> */}
                     <Link className="text-blue-400 hover:text-purple-400" href="/blog?sortBy=topicasc">Topic</Link>
                     <Link className="text-blue-400 hover:text-purple-400" href="/blog?sortBy=alphabet">Alphabetical</Link>
                     </div>
