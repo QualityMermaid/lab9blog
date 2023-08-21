@@ -40,7 +40,6 @@ function compareBlogTitle(a: BlogTopic, b: BlogTopic){
 }
 
 export default function BlogPage({searchParams}:{searchParams: BlogSearchQuery}) {
-    console.log(searchParams)
     if(searchParams.sortBy === "topicasc"){
         blogposts.sort(compareBlogTopics)
     } else if ( searchParams.sortBy === "topicdec"){
