@@ -2,14 +2,14 @@ import { WEBSITE_URL } from "config"
 
 export default async function Comments({slug}: {slug:string}){
     // this will show all comments and be able for people to add more comments
-    const commentsRes = await fetch(`${WEBSITE_URL}/api/comments/${slug}`, {next:{revalidate: 1}})
+    const commentsRes = await fetch(`https://lab9blog.vercel.app/api/comments/${slug}`, {next:{revalidate: 1}})
     const comments = await commentsRes.json()
     return(
         <>
             <form action={`/api/comments/${slug}`} method="POST">
                 <label className="text-purple-400" htmlFor="username">Name</label>
                 <br/>
-                <input className="bg-gray-700 m-1" name="username"/>
+                <input className="bg-gray-700 m-1" name="username" placeholder="Display Name"/>
                 <br/>
                 <br/>
                 <label className="text-purple-400" htmlFor="comment">Comment</label>
