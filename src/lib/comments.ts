@@ -22,7 +22,7 @@ export async function saveComment(username:string, comment:string, slug:string) 
 
 export async function getComments(slug: string) {
   const commentIds = await kv.lrange(`comments:${slug}`, 0, -1)
-  const commentKeys = commentIds.map(id=> `comment:${id}`) //[comment:1234, comment:2345, comment:54234]
+  const commentKeys = commentIds.map((id) => `comment:${id}`) //[comment:1234, comment:2345, comment:54234]
 
   if(commentKeys.length < 1){
     return []
