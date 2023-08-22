@@ -1,37 +1,33 @@
 import { WEBSITE_URL } from "config"
+import CommentForm from "./CommentForm"
+
 
 export default async function Comments({slug}: {slug:string}){
     // this will show all comments and be able for people to add more comments
-    const commentsRes = await fetch(`https://lab9blog.vercel.app/api/comments/${slug}`, {next:{revalidate: 1}})
-    const comments = await commentsRes.json()
+    let comments = []
+    try{
+        const commentsRes = await fetch(`${WEBSITE_URL}/api/comments/${slug}`, {next:{revalidate: 4}})
+        comments = await commentsRes.json()
+    } catch (error){
+        console.log(error)
+    }
+
     return(
-        <>
-            <form action={`/api/comments/${slug}`} method="POST">
-                <label className="text-purple-400" htmlFor="username">Name</label>
-                <br/>
-                <input className="bg-gray-700 m-1" name="username" placeholder="Display Name"/>
-                <br/>
-                <br/>
-                <label className="text-purple-400" htmlFor="comment">Comment</label>
-                <br/>
-                <textarea className="bg-gray-700 m-1" name="comment" cols={30} rows={10}/>
-                <br/>
-                <br/>
-                <button type="submit" className="border border-white p-1">Send Comment</button>
-            </form>
-            <h3>Comments</h3>
+        <div>
+            <h3 className="text-lime-400 text-2xl">Comment</h3>
+            <CommentForm slug={slug}/>
+            <h3 className="text-lime-400 text-2xl">Comments</h3>
             <ul>
             {/* @ts-ignore*/}
             {comments.map((comment) => {
                 return (
-                    <li key={comment.uuid}>
-                        {comment.username} says...
-                        <br/>
-                        {comment.comment}
+                    <li className="border border-blue-400 p-1 m-2" key={comment.uuid}>
+                        <h3 className="text-xl text-fuchsia-400 p-1">{comment.username}</h3>
+                        <p className="p-2">{comment.comment}</p>
                     </li>
                 )
             })}
             </ul>
-        </>
+        </div>
     )
 }
